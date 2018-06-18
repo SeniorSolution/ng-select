@@ -78,7 +78,7 @@ export class NgSelectComponent implements OnDestroy, OnChanges, AfterViewInit, C
     @Input() items: any[] = [];
     @Input() bindLabel: string;
     @Input() bindValue: string;
-    @Input() clearable = true;
+    @Input() clearable = false;
     @Input() markFirst = true;
     @Input() placeholder: string;
     @Input() notFoundText: string;
@@ -766,5 +766,7 @@ export class NgSelectComponent implements OnDestroy, OnChanges, AfterViewInit, C
         this.addTagText = this.addTagText || config.addTagText;
         this.loadingText = this.loadingText || config.loadingText;
         this.clearAllText = this.clearAllText || config.clearAllText;
+        this.appendTo = this.appendTo || config.appendTo;
+        this.clearable = this.clearable || config.clearable;
     }
 }

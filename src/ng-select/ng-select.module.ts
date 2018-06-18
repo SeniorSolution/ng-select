@@ -64,7 +64,9 @@ import { ConsoleService } from './console.service';
                 addTagText: 'Add item',
                 loadingText: 'Loading...',
                 clearAllText: 'Clear all',
-                disableVirtualScroll: false
+                disableVirtualScroll: false,
+                appendTo: null,
+                clearable: true
             }
         }
     ]

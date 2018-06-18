@@ -27,4 +27,6 @@ export interface NgSelectConfig {
     addTagText?: string;
     loadingText?: string;
     clearAllText?: string;
+    appendTo?: string;
+    clearable?: boolean;
 }

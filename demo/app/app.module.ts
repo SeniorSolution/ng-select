@@ -72,7 +72,9 @@ export const appRoutes: Routes = [
                 addTagText: 'Add item',
                 typeToSearchText: 'Type to search',
                 loadingText: 'Loading...',
-                clearAllText: 'Clear all'
+                clearAllText: 'Clear all',
+                appendTo: 'body',
+                clearable: true
             }
         }
     ],
