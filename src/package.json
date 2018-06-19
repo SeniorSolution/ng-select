@@ -1,11 +1,11 @@
 {
   "$schema": "../node_modules/ng-packagr/package.schema.json",
-  "name": "@ng-select/ng-select",
+  "name": "@snsl/ng-select",
   "version": "1.5.2",
   "description": "Angular ng-select - All in One UI Select, Multiselect and Autocomplete",
   "author": "@ng-select/ng-select",
   "license": "MIT",
-  "repository": "git@github.com:ng-select/ng-select.git",
+  "repository": "git@github.com:SeniorSolution/ng-select.git",
   "engines": {
     "node": ">= 6.9.0",
     "npm": ">= 3.0.0"
