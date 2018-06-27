@@ -29,4 +29,5 @@ export interface NgSelectConfig {
     clearAllText?: string;
     appendTo?: string;
     clearable?: boolean;
+    selectOnTab?: boolean;
 }

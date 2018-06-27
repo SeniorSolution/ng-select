@@ -768,5 +768,6 @@ export class NgSelectComponent implements OnDestroy, OnChanges, AfterViewInit, C
         this.clearAllText = this.clearAllText || config.clearAllText;
         this.appendTo = this.appendTo || config.appendTo;
         this.clearable = this.clearable || config.clearable;
+        this.selectOnTab = this.selectOnTab || config.selectOnTab;
     }
 }

@@ -107,5 +107,3 @@ export class DataSourceComponent {
         car.disabled = !car.disabled;
     }
 }
-
-

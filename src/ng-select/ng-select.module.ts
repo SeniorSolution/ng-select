@@ -59,14 +59,15 @@ import { ConsoleService } from './console.service';
         {
             provide: NG_SELECT_DEFAULT_CONFIG,
             useValue: {
-                notFoundText: 'No items found',
+                notFoundText: 'Nenhum item encontrado',
                 typeToSearchText: 'Type to search',
                 addTagText: 'Add item',
                 loadingText: 'Loading...',
                 clearAllText: 'Clear all',
                 disableVirtualScroll: false,
                 appendTo: null,
-                clearable: true
+                clearable: true,
+                selectOnTab: true
             }
         }
     ]

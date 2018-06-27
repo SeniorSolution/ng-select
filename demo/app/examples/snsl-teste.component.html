@@ -1,0 +1,22 @@
+<style>
+    .esquerda {
+        width: 100px;
+    }
+
+    .direita {
+        width: 100px;
+        margin-left: auto;
+    }
+
+    .ng-dropdown-panel {
+        width: auto !important;
+    }
+</style>
+<h2>Testes relativos a senior</h2>
+<div class="esquerda">
+    <ng-select bindLabel="nome" bindValue="id" [items]="cars" appendTo="body"></ng-select>
+</div>
+<div class="direita">
+    <br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
+    <ng-select bindLabel="nome" bindValue="id" [items]="cars" appendTo="body"></ng-select>
+</div>

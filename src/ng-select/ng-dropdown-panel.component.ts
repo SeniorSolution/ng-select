@@ -32,6 +32,7 @@ import { Subject } from 'rxjs/Subject';
 const TOP_CSS_CLASS = 'ng-select-top';
 const BOTTOM_CSS_CLASS = 'ng-select-bottom';
 
+
 @Component({
     changeDetection: ChangeDetectionStrategy.OnPush,
     encapsulation: ViewEncapsulation.None,
@@ -78,7 +79,7 @@ export class NgDropdownPanelComponent implements OnInit, OnChanges, OnDestroy, A
     private _isScrolledToMarked = false;
     private _scrollToEndFired = false;
     private _itemsList: ItemsList;
-    private _currentPosition: 'bottom' | 'top';
+    private _currentPosition: any;
     private _disposeScrollListener = () => { };
     private _disposeDocumentResizeListener = () => { };
 
@@ -179,7 +180,7 @@ export class NgDropdownPanelComponent implements OnInit, OnChanges, OnDestroy, A
         const dropdownEl: HTMLElement = this._elementRef.nativeElement;
         this._currentPosition = this._calculateCurrentPosition(dropdownEl);
         const selectEl: HTMLElement = this._selectElement;
-        if (this._currentPosition === 'top') {
+        if (this._currentPosition.vertical === 'top') {
             this._renderer.addClass(dropdownEl, TOP_CSS_CLASS)
             this._renderer.removeClass(dropdownEl, BOTTOM_CSS_CLASS)
             this._renderer.addClass(selectEl, TOP_CSS_CLASS)
@@ -320,16 +321,37 @@ export class NgDropdownPanelComponent implements OnInit, OnChanges, OnDestroy, A
         if (this.position !== 'auto') {
             return this.position;
         }
+        const result = {horizontal: '', vertical: ''};
         const selectRect: ClientRect = this._selectElement.getBoundingClientRect();
+
         const scrollTop = document.documentElement.scrollTop || document.body.scrollTop;
+        const scrollLeft = document.documentElement.scrollLeft || document.body.scrollLeft;
+
         const offsetTop = selectRect.top + window.pageYOffset;
+        const offsetLeft = selectRect.left + window.pageXOffset;
+
         const height = selectRect.height;
+        const width = selectRect.width;
+
         const dropdownHeight = dropdownEl.getBoundingClientRect().height;
+        const dropdownWidth = dropdownEl.getBoundingClientRect().width;
+
+
+
+
+
         if (offsetTop + height + dropdownHeight > scrollTop + document.documentElement.clientHeight) {
-            return 'top';
+            result.vertical = 'top';
         } else {
-            return 'bottom';
+            result.vertical = 'bottom';
         }
+        if ( offsetLeft + width + dropdownWidth > scrollLeft + document.documentElement.clientWidth) {
+            result.horizontal = 'left';
+        } else {
+            result.horizontal = 'right';
+        }
+
+        return result;
     }
 
     private _appendDropdown() {
@@ -342,15 +364,29 @@ export class NgDropdownPanelComponent implements OnInit, OnChanges, OnDestroy, A
 
     private _updateAppendedDropdownPosition() {
         const parent = document.querySelector(this.appendTo) || document.body;
+
         const selectRect: ClientRect = this._selectElement.getBoundingClientRect();
+
         const dropdownPanel: HTMLElement = this._elementRef.nativeElement;
+
         const boundingRect = parent.getBoundingClientRect();
+
         const offsetTop = selectRect.top - boundingRect.top;
         const offsetLeft = selectRect.left - boundingRect.left;
-        const topDelta = this._currentPosition === 'bottom' ? selectRect.height : -dropdownPanel.clientHeight;
+
+        const topDelta = this._currentPosition.vertical === 'bottom' ? selectRect.height : -dropdownPanel.clientHeight;
+
         dropdownPanel.style.top = offsetTop + topDelta + 'px';
         dropdownPanel.style.bottom = 'auto';
-        dropdownPanel.style.left = offsetLeft + 'px';
+
+        if (this._currentPosition.horizontal === 'right') {
+            dropdownPanel.style.left = offsetLeft + 'px';
+            dropdownPanel.style.right = 'auto';
+        } else {
+            dropdownPanel.style.right = parent.clientWidth - (selectRect.width + offsetLeft) + 'px';
+            dropdownPanel.style.left = 'auto';
+        }
+        
         dropdownPanel.style.width = selectRect.width + 'px';
         dropdownPanel.style.minWidth = selectRect.width + 'px';
     }

@@ -24,6 +24,7 @@ import { DataService } from './shared/data.service';
 import { AppendToComponent } from './examples/append-to.component';
 import { DataSourceComponent } from './examples/data-source.component';
 import { SelectGroupsComponent } from './examples/groups.component';
+import { SnslTesteComponent } from './examples/snsl-teste.component';
 
 export const appRoutes: Routes = [
     {
@@ -45,6 +46,7 @@ export const appRoutes: Routes = [
     // tslint:disable-next-line:max-line-length
     { path: 'append-to-element', component: AppendToComponent, data: { title: 'Append to element', fileName: 'append-to.component.ts' } },
     { path: 'grouping', component: SelectGroupsComponent, data: { title: 'Grouping', fileName: 'groups.component.ts' } },
+    { path: 'snsl', component: SnslTesteComponent, data: { title: 'Snsl', fileName: 'snsl-teste.component.ts' } }
 ];
 
 @NgModule({
@@ -94,7 +96,8 @@ export const appRoutes: Routes = [
         AppendToComponent,
         DataSourceComponent,
         SelectGroupsComponent,
-        ConfirmationComponent
+        ConfirmationComponent,
+        SnslTesteComponent
     ],
     entryComponents: [ConfirmationComponent],
     bootstrap: [AppComponent]
