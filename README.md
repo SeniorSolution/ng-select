@@ -146,6 +146,7 @@ map: {
 | (close)  | Fired on select dropdown close |
 | (clear)  | Fired on clear icon click |
 | (focus)  | Fired on select focus |
+| (search) | Fired while typing search term |
 | (open)  | Fired on select dropdown open |
 | (remove)  | Fired when item is removed |
 | (scrollToEnd)  | Fired when scrolled to the end of items. Can be used for loading more items in chunks. |

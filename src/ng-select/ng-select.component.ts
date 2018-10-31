@@ -451,6 +451,8 @@ export class NgSelectComponent implements OnDestroy, OnChanges, AfterViewInit, C
             this.itemsList.filter(this.filterValue);
             this.itemsList.markSelectedOrDefault(this.markFirst);
         }
+
+        this.searchEvent.emit(term);
     }
 
     onInputFocus() {

@@ -2237,7 +2237,24 @@ describe('NgSelectComponent', function () {
             expect(fixture.componentInstance.onOpen).toHaveBeenCalledTimes(1);
         }));
 
-        it('fire close event once', fakeAsync(() => {
+        it('should fire search event', fakeAsync(() => {
+            const fixture = createTestingModule(
+                NgSelectTestCmp,
+                `<ng-select [items]="cities"
+                            (search)="onSearch($event)"
+                            [(ngModel)]="selectedCity">
+                </ng-select>`);
+
+            spyOn(fixture.componentInstance, 'onSearch');
+
+            fixture.componentInstance.select.filter('term');
+            tickAndDetectChanges(fixture);
+
+            expect(fixture.componentInstance.onSearch).toHaveBeenCalledTimes(1);
+            expect(fixture.componentInstance.onSearch).toHaveBeenCalledWith('term');
+        }));
+
+        it('should fire close event once', fakeAsync(() => {
             const fixture = createTestingModule(
                 NgSelectTestCmp,
                 `<ng-select [items]="cities"
@@ -2753,6 +2770,8 @@ class NgSelectTestCmp {
     onAdd() { }
     onRemove() { }
     onClear() { }
+    onSearch() { }
+    onScroll() { }
     onScrollToEnd() { }
 }
 
