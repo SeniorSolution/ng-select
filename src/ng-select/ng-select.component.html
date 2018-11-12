@@ -32,6 +32,7 @@
                    (input)="filter(filterInput.value)"
                    (focus)="onInputFocus()"
                    (blur)="onInputBlur()"
+                   (paste)="onPaste($event)"
                    (change)="$event.stopPropagation()"
                    role="combobox"
                    [attr.aria-expanded]="isOpen"

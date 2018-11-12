@@ -116,6 +116,7 @@ export class NgSelectComponent implements OnDestroy, OnChanges, AfterViewInit, C
 
     // output events
     @Output('blur') blurEvent = new EventEmitter();
+    @Output('paste') pasteEvent = new EventEmitter();
     @Output('focus') focusEvent = new EventEmitter();
     @Output('change') changeEvent = new EventEmitter();
     @Output('open') openEvent = new EventEmitter();
@@ -468,6 +469,10 @@ export class NgSelectComponent implements OnDestroy, OnChanges, AfterViewInit, C
             this._onTouched();
         }
         this._focused = false;
+    }
+
+    onPaste(event) {
+        this.pasteEvent.emit(event);
     }
 
     onItemHover(item: NgOption) {
