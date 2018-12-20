@@ -21,7 +21,6 @@ import {
     ContentChildren,
     QueryList,
     InjectionToken,
-    NgZone,
     Attribute
 } from '@angular/core';
 import { ControlValueAccessor, NG_VALUE_ACCESSOR } from '@angular/forms';
@@ -48,7 +47,6 @@ import { NgOption, KeyCode, NgSelectConfig } from './ng-select.types';
 import { newId } from './id';
 import { NgDropdownPanelComponent } from './ng-dropdown-panel.component';
 import { NgOptionComponent } from './ng-option.component';
-import { WindowService } from './window.service';
 
 export const NG_SELECT_DEFAULT_CONFIG = new InjectionToken<NgSelectConfig>('ng-select-default-options');
 export type DropdownPosition = 'bottom' | 'top' | 'auto';
@@ -173,8 +171,6 @@ export class NgSelectComponent implements OnDestroy, OnChanges, AfterViewInit, C
         @Attribute('class') public classes: string,
         private _cd: ChangeDetectorRef,
         private _console: ConsoleService,
-        private _zone: NgZone,
-        private _window: WindowService,
         public elementRef: ElementRef
     ) {
         this._mergeGlobalConfig(config);
@@ -237,6 +233,8 @@ export class NgSelectComponent implements OnDestroy, OnChanges, AfterViewInit, C
                     break;
                 case KeyCode.Esc:
                     this.close();
+                    $event.preventDefault();
+                    $event.stopPropagation();
                     break;
                 case KeyCode.Backspace:
                     this._handleBackspace();
@@ -387,14 +385,7 @@ export class NgSelectComponent implements OnDestroy, OnChanges, AfterViewInit, C
     }
 
     focus() {
-        if (!this.filterInput) {
-            return;
-        }
-        this._zone.runOutsideAngular(() => {
-            this._window.setTimeout(() => {
                 this.filterInput.nativeElement.focus();
-            }, 5);
-        });
     }
 
     unselect(item: NgOption) {

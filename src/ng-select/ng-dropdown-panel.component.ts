@@ -17,17 +17,21 @@ import {
     AfterContentInit,
     OnInit,
     OnChanges,
-    HostListener
+    HostListener,
+    Optional
 } from '@angular/core';
 
+import { DOCUMENT } from '@angular/common';
 import { NgOption } from './ng-select.types';
 import { NgSelectComponent, DropdownPosition } from './ng-select.component';
 import { ItemsList } from './items-list';
 import { WindowService } from './window.service';
 import { VirtualScrollService } from './virtual-scroll.service';
-import { fromEventPattern } from 'rxjs/observable/fromEventPattern';
+import { fromEvent } from 'rxjs/observable/fromEvent';
+import { merge } from 'rxjs/observable/merge';
 import { takeUntil } from 'rxjs/operators';
 import { Subject } from 'rxjs/Subject';
+
 
 const TOP_CSS_CLASS = 'ng-select-top';
 const BOTTOM_CSS_CLASS = 'ng-select-bottom';
@@ -89,7 +93,8 @@ export class NgDropdownPanelComponent implements OnInit, OnChanges, OnDestroy, A
         private _elementRef: ElementRef,
         private _zone: NgZone,
         private _virtualScrollService: VirtualScrollService,
-        private _window: WindowService
+        private _window: WindowService,
+        @Optional() @Inject(DOCUMENT) private _document: any
     ) {
         this._selectElement = _ngSelect.elementRef.nativeElement;
         this._itemsList = _ngSelect.itemsList;
@@ -107,9 +112,15 @@ export class NgDropdownPanelComponent implements OnInit, OnChanges, OnDestroy, A
 
     ngOnInit() {
         this._handleScroll();
-        fromEventPattern((handler: any) => document.addEventListener('mousedown', handler, true))
-            .pipe(takeUntil(this._destroy$))
-            .subscribe(($event) => this._handleOutsideClick($event))
+
+        if (this._document) {
+            merge(
+                fromEvent(this._document, 'touchstart', { capture: true }),
+                fromEvent(this._document, 'mousedown', { capture: true })
+            )
+                .pipe(takeUntil(this._destroy$))
+                .subscribe(($event) => this._handleOutsideClick($event));
+        }
     }
 
     ngOnChanges(changes: SimpleChanges) {
