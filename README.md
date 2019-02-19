@@ -1,13 +1,13 @@
  [![npm version](https://badge.fury.io/js/%40ng-select%2Fng-select.svg)](https://badge.fury.io/js/%40ng-select%2Fng-select)
 [![Build Status][travis-badge]][travis-badge-url]
 [![Coverage Status][coveralls-image]][coveralls-url]
-[![gzip bundle size](http://img.badgesize.io/https://unpkg.com/@ng-select/ng-select@latest/bundles/ng-select.umd.min.js?compression=gzip&style=flat-square)][ng-select-url]
+[![gzip bundle size](http://img.badgesize.io/https://unpkg.com/@sinqia/ng-select@latest/bundles/ng-select.umd.min.js?compression=gzip&style=flat-square)][ng-select-url]
 
 [travis-badge]: https://travis-ci.org/ng-select/ng-select.svg?branch=master
 [travis-badge-url]: https://travis-ci.org/ng-select/ng-select
 [coveralls-image]: https://coveralls.io/repos/github/ng-select/ng-select/badge.svg?branch=master
 [coveralls-url]: https://coveralls.io/github/ng-select/ng-select?branch=master
-[ng-select-url]: https://unpkg.com/@ng-select/ng-select@latest
+[ng-select-url]: https://unpkg.com/@sinqia/ng-select@latest
 
 # Angular ng-select - Lightweight all in one UI Select, Multiselect and Autocomplete
 See [Demos](https://ng-select.github.io/ng-select) or try in [Stackblitz](https://stackblitz.com/edit/ng-select?file=app%2Fapp.component.ts)
@@ -59,15 +59,15 @@ Library is under active development and may have API breaking changes for subseq
 
 #### NPM
 ```shell
-npm install --save @ng-select/ng-select
+npm install --save @sinqia/ng-select
 ```
 #### YARN
 ```shell
-yarn add @ng-select/ng-select
+yarn add @sinqia/ng-select
 ```
 ### Step 2: Import the NgSelectModule and angular FormsModule module:
 ```js
-import { NgSelectModule } from '@ng-select/ng-select';
+import { NgSelectModule } from '@sinqia/ng-select';
 import { FormsModule } from '@angular/forms';
 
 @NgModule({
@@ -82,9 +82,9 @@ export class AppModule {}
 To allow customization and theming, `ng-select` bundle includes only generic styles that are necessary for correct layout and positioning. To get full look of the control, include one of the themes in your application. If you're using the Angular CLI, you can add this to your `styles.scss` or include it in `.angular-cli.json` (Angular v5 and below) or `angular.json` (Angular v6 onwards).
 
 ```scss
-@import "~@ng-select/ng-select/themes/default.theme.css";
+@import "~@sinqia/ng-select/themes/default.theme.css";
 // ... or 
-@import "~@ng-select/ng-select/themes/material.theme.css";
+@import "~@sinqia/ng-select/themes/material.theme.css";
 
 ```
 
@@ -107,7 +107,7 @@ If you are using SystemJS, you should also adjust your configuration to point to
 In your systemjs config file, `map` needs to tell the System loader where to look for `ng-select`:
 ```js
 map: {
-  '@ng-select/ng-select': 'node_modules/@ng-select/ng-select/bundles/ng-select.umd.js',
+  '@sinqia/ng-select': 'node_modules/@sinqia/ng-select/bundles/ng-select.umd.js',
 }
 ```
 

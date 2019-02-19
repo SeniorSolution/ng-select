@@ -1,6 +1,6 @@
 import { ChangeDetectionStrategy, Component } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { NgOption } from '@ng-select/ng-select';
+import { NgOption } from '@sinqia/ng-select';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { DataService } from '../shared/data.service';
 import { NgSelectComponent } from '../../../src/ng-select/ng-select.component';

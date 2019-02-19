@@ -8,7 +8,7 @@ const materialTheme = require('./../../../src/themes/material.theme.scss');
         <nav class="navbar navbar-expand navbar-dark flex-column flex-md-row bd-navbar bg-dark">
             <a class="navbar-brand" href="#">
                 <img src="https://angular.io/assets/images/logos/angular/angular.svg" width="32px" height="32px"/>
-                @ng-select/ng-select@{{version}}
+                @sinqia/ng-select@{{version}}
             </a>
             <button class="navbar-toggler"
                     type="button"

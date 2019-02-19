@@ -174,7 +174,7 @@
   dependencies:
     tslib "^1.9.0"
 
-"@ng-select/ng-select@file:../dist":
+"@sinqia/ng-select@file:../dist":
   version "1.4.2"
   dependencies:
     tslib "^1.9.0"

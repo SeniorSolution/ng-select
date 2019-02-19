@@ -4,7 +4,7 @@ import { FormsModule } from '@angular/forms';
 import { CommonModule } from '@angular/common';
 
 import { AppComponent } from './app.component';
-import { NgSelectModule, NG_SELECT_DEFAULT_CONFIG } from '@ng-select/ng-select';
+import { NgSelectModule, NG_SELECT_DEFAULT_CONFIG } from '@sinqia/ng-select';
 
 @NgModule({
   declarations: [
