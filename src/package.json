@@ -1,7 +1,7 @@
 {
   "$schema": "../node_modules/ng-packagr/package.schema.json",
-  "name": "@snsl/ng-select",
-  "version": "1.5.8",
+  "name": "@sinqia/ng-select",
+  "version": "1.5.9",
   "description": "Angular ng-select - All in One UI Select, Multiselect and Autocomplete",
   "author": "@ng-select/ng-select",
   "license": "MIT",
@@ -21,9 +21,9 @@
     "angular4"
   ],
   "peerDependencies": {
-    "@angular/common": ">=5.0.0 <7.0.0",
-    "@angular/core": ">=5.0.0 <7.0.0",
-    "@angular/forms": ">=5.0.0 <7.0.0"
+    "@angular/common": ">=5.0.0 <8.0.0",
+    "@angular/core": ">=5.0.0 <8.0.0",
+    "@angular/forms": ">=5.0.0 <8.0.0"
   },
   "ngPackage": {
     "lib": {
