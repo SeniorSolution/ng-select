@@ -364,9 +364,9 @@ export class NgDropdownPanelComponent implements OnInit, OnChanges, OnDestroy, A
 
     private _checkAppendToDirection(): Element {
         if (this.appendToDirection === 'up') {
-            return document.querySelector(this.appendTo);
-        } else {
             return this._selectElement.closest(this.appendTo);
+        } else {
+            return document.querySelector(this.appendTo);
         }
     }
 

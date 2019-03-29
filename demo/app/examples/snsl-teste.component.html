@@ -8,7 +8,7 @@
         margin-left: auto;
     }
 
-    .scroll {
+    .ng-select__scroll {
         position: relative;
         margin: 20px 0;
         border: 1px solid #333;
@@ -16,12 +16,12 @@
         overflow-y: auto;
     }
 
-    .scroll .scroll {
+    .ng-select__scroll .ng-select__scroll {
         background-color: #696969;
         z-index: 1000;
     }
 
-    .container {
+    .container__scroll {
         height: 500px;
     }
 </style>
@@ -34,19 +34,19 @@
 </div>
 
 <h2>Testes relativos a elementos que possuem scroll</h2>
-<div class="scroll">
-    <div class="container">
-        <ng-select bindLabel="nome" bindValue="id" [items]="cars" appendTo=".scroll" appendToDirection="up"></ng-select>
+<div class="ng-select__scroll">
+    <div class="container__scroll">
+        <ng-select bindLabel="nome" bindValue="id" [items]="cars" appendTo=".ng-select__scroll" appendToDirection="up"></ng-select>
     </div>
 
-    <div class="scroll">
-        <div class="container">
-            <ng-select bindLabel="nome" bindValue="id" [items]="cars" appendTo=".scroll" appendToDirection="up"></ng-select>
+    <div class="ng-select__scroll">
+        <div class="container__scroll">
+            <ng-select bindLabel="nome" bindValue="id" [items]="cars" appendTo=".ng-select__scroll" appendToDirection="up"></ng-select>
         </div>
     </div>
 </div>
-<div class="scroll">
-    <ng-select bindLabel="nome" bindValue="id" [items]="cars" appendTo=".scroll" appendToDirection="up"></ng-select>
+<div class="ng-select__scroll">
+    <ng-select bindLabel="nome" bindValue="id" [items]="cars" appendTo=".ng-select__scroll" appendToDirection="up"></ng-select>
 </div>
 
 <ng-select bindLabel="nome" bindValue="id" [items]="cars"></ng-select>
