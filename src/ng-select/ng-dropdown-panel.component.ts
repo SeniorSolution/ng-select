@@ -62,6 +62,7 @@ export class NgDropdownPanelComponent implements OnInit, OnChanges, OnDestroy, A
     @Input() items: NgOption[] = [];
     @Input() position: DropdownPosition = 'auto';
     @Input() appendTo: string;
+    @Input() appendToDirection: string;
     @Input() bufferAmount = 4;
     @Input() virtualScroll = false;
     @Input() headerTemplate: TemplateRef<any>;
@@ -347,10 +348,6 @@ export class NgDropdownPanelComponent implements OnInit, OnChanges, OnDestroy, A
         const dropdownHeight = dropdownEl.getBoundingClientRect().height;
         const dropdownWidth = dropdownEl.getBoundingClientRect().width;
 
-
-
-
-
         if (offsetTop + height + dropdownHeight > scrollTop + document.documentElement.clientHeight) {
             result.vertical = 'top';
         } else {
@@ -365,17 +362,26 @@ export class NgDropdownPanelComponent implements OnInit, OnChanges, OnDestroy, A
         return result;
     }
 
+    private _checkAppendToDirection(): Element {
+        if (this.appendToDirection === 'up') {
+            return document.querySelector(this.appendTo);
+        } else {
+            return this._selectElement.closest(this.appendTo);
+        }
+    }
+
     private _appendDropdown() {
-        const parent = document.querySelector(this.appendTo);
+        const parent = this._checkAppendToDirection();
+
         if (!parent) {
             throw new Error(`appendTo selector ${this.appendTo} did not found any parent element`)
         }
+
         parent.appendChild(this._elementRef.nativeElement);
     }
 
     private _updateAppendedDropdownPosition() {
-        const parent = document.querySelector(this.appendTo) || document.body;
-
+        const parent = this._checkAppendToDirection() || document.body;
         const selectRect: ClientRect = this._selectElement.getBoundingClientRect();
 
         const dropdownPanel: HTMLElement = this._elementRef.nativeElement;

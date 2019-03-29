@@ -86,6 +86,7 @@ export class NgSelectComponent implements OnDestroy, OnChanges, AfterViewInit, C
     @Input() clearAllText: string;
     @Input() dropdownPosition: DropdownPosition = 'auto';
     @Input() appendTo: string;
+    @Input() appendToDirection = 'down';
     @Input() loading = false;
     @Input() closeOnSelect = true;
     @Input() hideSelected = false;
@@ -765,6 +766,7 @@ export class NgSelectComponent implements OnDestroy, OnChanges, AfterViewInit, C
         this.loadingText = this.loadingText || config.loadingText;
         this.clearAllText = this.clearAllText || config.clearAllText;
         this.appendTo = this.appendTo || config.appendTo;
+        this.appendToDirection = this.appendToDirection || config.appendToDirection;
         this.clearable = this.clearable || config.clearable;
         this.selectOnTab = this.selectOnTab || config.selectOnTab;
     }

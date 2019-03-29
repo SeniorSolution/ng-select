@@ -8,8 +8,21 @@
         margin-left: auto;
     }
 
-    .ng-dropdown-panel {
-        width: auto !important;
+    .scroll {
+        position: relative;
+        margin: 20px 0;
+        border: 1px solid #333;
+        height: 300px;
+        overflow-y: auto;
+    }
+
+    .scroll .scroll {
+        background-color: #696969;
+        z-index: 1000;
+    }
+
+    .container {
+        height: 500px;
     }
 </style>
 <h2>Testes relativos a senior</h2>
@@ -17,6 +30,24 @@
     <ng-select bindLabel="nome" bindValue="id" [items]="cars" appendTo="body"></ng-select>
 </div>
 <div class="direita">
-    <br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
     <ng-select bindLabel="nome" bindValue="id" [items]="cars" appendTo="body"></ng-select>
 </div>
+
+<h2>Testes relativos a elementos que possuem scroll</h2>
+<div class="scroll">
+    <div class="container">
+        <ng-select bindLabel="nome" bindValue="id" [items]="cars" appendTo=".scroll" appendToDirection="up"></ng-select>
+    </div>
+
+    <div class="scroll">
+        <div class="container">
+            <ng-select bindLabel="nome" bindValue="id" [items]="cars" appendTo=".scroll" appendToDirection="up"></ng-select>
+        </div>
+    </div>
+</div>
+<div class="scroll">
+    <ng-select bindLabel="nome" bindValue="id" [items]="cars" appendTo=".scroll" appendToDirection="up"></ng-select>
+</div>
+
+<ng-select bindLabel="nome" bindValue="id" [items]="cars"></ng-select>
+
